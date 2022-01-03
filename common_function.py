@@ -5,7 +5,7 @@ def is_illegal_num(num):
         return False
 
 
-def into_game(num, start_game, player_computer):
+def into_start_game(num, start_game, player_computer):
     if num == 1:
         start_game[0][0] = player_computer
     elif num == 2:
@@ -94,3 +94,12 @@ def get_0_index(start_game):
     if start_game[2][2] == 0:
         index_0_list.append(9)
     return index_0_list
+
+
+def print_game(start_game):
+    # 2 3 4 行
+    for i in range(len(start_game)):
+        for num in start_game[i]:
+            print(num, end=' ')
+        # if i != len(start_game) - 1:
+        print()

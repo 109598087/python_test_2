@@ -1,6 +1,6 @@
 import copy
 
-from common_function import is_illegal_num, into_game, get_result, get_0_index
+from common_function import is_illegal_num, into_start_game, get_result, get_0_index, print_game
 
 row1 = input()
 # try:
@@ -35,22 +35,16 @@ for i in range(len(row_split)):
 # add
 if M == 1:
     for num in player1_list:
-        start_game = into_game(num, start_game, 1)
+        start_game = into_start_game(num, start_game, 1)
     for num in player2_list:
-        start_game = into_game(num, start_game, 2)
+        start_game = into_start_game(num, start_game, 2)
 else:
     for num in player1_list:
-        start_game = into_game(num, start_game, 2)
+        start_game = into_start_game(num, start_game, 2)
     for num in player2_list:
-        start_game = into_game(num, start_game, 1)
+        start_game = into_start_game(num, start_game, 1)
 
-# 2 3 4 行
-for i in range(len(start_game)):
-    for num in start_game[i]:
-        print(num, end=' ')
-    # if i != len(start_game) - 1:
-    print()
-
+print_game(start_game)
 result = get_result(start_game)
 print(result)
 
@@ -60,7 +54,7 @@ if result == 4:
     is_computer_win = False
     for num in index_0_list:
         temp_game = copy.deepcopy(start_game)
-        temp_game = into_game(num, temp_game, 2)
+        temp_game = into_start_game(num, temp_game, 2)
         if get_result(temp_game) == 2:
             print(num)
             is_computer_win = True
@@ -68,6 +62,6 @@ if result == 4:
     if is_computer_win == False:
         for num in index_0_list:
             temp_game = copy.deepcopy(start_game)
-            temp_game = into_game(num, temp_game, 1)
+            temp_game = into_start_game(num, temp_game, 1)
             if get_result(temp_game) == 1:
                 print(num)
