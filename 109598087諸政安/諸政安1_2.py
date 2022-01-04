@@ -217,7 +217,7 @@ else:
     while True:
         player_go = player_input(start_game)
         start_game = into_start_game(player_go, start_game, 1)
-        print_game(start_game)
+        # print_game(start_game)
         result = get_result(start_game)
         if result != 4:
             break

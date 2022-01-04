@@ -1,6 +1,6 @@
 import copy
 
-from 諸政安common_function import is_illegal_num, into_start_game, get_result, get_0_index, print_game
+from 諸政安common_function import into_start_game, get_result, get_0_index, print_game
 
 def get_row1():
     row1 = input()
