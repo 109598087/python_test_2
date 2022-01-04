@@ -168,7 +168,16 @@ def get_live_two_position(start_game):
     return num_list
 
 
-M = int(input())
+def get_M():
+    M = input("Please 1(computer) or 2(player): ")
+    if M not in ['1', '2']:
+        M = get_M()
+    return M
+
+
+M = get_M()
+M = int(M)
+
 player_num_list = list()
 computer_num_list = list()
 start_game = [[0, 0, 0],
@@ -180,7 +189,8 @@ def player_input(start_game):
     try:
         player_go = input("Please input num: ")
         zero_index_list = get_0_index(start_game)
-        if not player_go.isnumeric() or int(player_go) > 9 or int(player_go) < 1 or player_go not in zero_index_list:
+        str_zero_index_list = [str(index) for index in zero_index_list]
+        if player_go not in [str(i) for i in range(1, 10)] or player_go not in str_zero_index_list:
             print('Error')
             return player_input(start_game)
     except:
