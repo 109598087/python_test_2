@@ -33,5 +33,28 @@ print(all_classroom_comb_list)
 all_class_comb_list = list(permutations(list(class_dict.keys())))
 print(all_class_comb_list)
 
-for class_comb in all_class_comb_list:
-    for classroom_comb in all_classroom_comb_list:
+# for class_comb in all_class_comb_list:
+#     for classroom_comb in all_classroom_comb_list:
+classroom_time_dict = {key: [i + 1 for i in range(24)] for key in classroom_dict}
+
+print(classroom_time_dict)
+print(all_class_comb_list[0])
+print(all_classroom_comb_list[0])
+
+time = 0
+result_class_classroom = list()
+for i in range(len(all_class_comb_list[0])):
+    _class = all_class_comb_list[0][i]
+    classroom = all_classroom_comb_list[0][i]
+
+    class_people = class_dict[_class][0]
+    classroom_people = classroom_dict[classroom]
+    if class_people <= classroom_people: # time
+        # when ok
+        start_time = class_dict[_class][1]
+        end_time = class_dict[_class][2]
+        time += end_time - start_time
+        result_class_classroom.append([_class, classroom])
+        for remove_time in range(start_time, end_time+1):
+            classroom_time_dict[classroom][classroom_time_dict[classroom].index(remove_time)] = 0
+        print(classroom_time_dict)
