@@ -6,9 +6,6 @@ def is_illegal_num(num):
 
 
 def into_start_game(num, start_game, player_computer):
-    if is_illegal_num(str(num)):
-        print('Error')
-        return
     if num == 1 and start_game[0][0] == 0:
         start_game[0][0] = player_computer
     elif num == 2 and start_game[0][1] == 0:
