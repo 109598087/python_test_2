@@ -2,14 +2,16 @@ import copy
 
 from 諸政安common_function import is_illegal_num, into_start_game, get_result, get_0_index, print_game
 
+def get_row1():
+    row1 = input()
+    if row1.split(' ')[0] not in ['1', '2'] or row1.split(' ')[1] not in [str(i) for i in range(1, 10)]:
+        print("Error")
+        return get_row1()
+    return row1
 
 def main():
-    row1 = input()
-    # try:
-    if is_illegal_num(row1.split(' ')[0]) or is_illegal_num(row1.split(' ')[1]):
-        print('Error')
-    else:
-        print('OK')
+    row1 = get_row1()
+    print('OK')
 
     M = int(row1.split(' ')[0])
     N = int(row1.split(' ')[1])

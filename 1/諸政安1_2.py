@@ -169,7 +169,7 @@ def get_live_two_position(start_game):
 
 
 def get_M():
-    M = input("Please 1(computer) or 2(player): ")
+    M = input("Please input 1(computer) or 2(player): ")
     if M not in ['1', '2']:
         M = get_M()
     return M
@@ -247,4 +247,11 @@ print(result)
 # 2
 
 # input
+# 1
 # 2
+# 9
+# 7
+# 5
+# 4
+# output
+# 3
