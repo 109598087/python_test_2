@@ -68,11 +68,22 @@ for class_comb in all_class_comb_list:
         # print(time)
         # print(result_class_classroom)
 
-print(time_list)
-print(max(time_list))
-print(all_comb_result_class_classroom_list)
+# print(time_list)
+# print(all_comb_result_class_classroom_list)
 
+class_number_list = [len(result) for result in all_comb_result_class_classroom_list]
+# print(class_number_list)
+
+# max time
 max_time = max(time_list)
+print(max_time)
 for i in range(len(time_list)):
     if time_list[i] == max_time:
         print(time_list[i], all_comb_result_class_classroom_list[i])
+
+# max class number
+max_class_number = max(class_number_list)
+print(max_class_number)
+for i in range(len(class_number_list)):
+    if class_number_list[i] == max_class_number:
+        print(all_comb_result_class_classroom_list[i])
