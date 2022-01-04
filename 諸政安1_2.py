@@ -1,6 +1,6 @@
 import copy
 
-from common_function import get_0_index, into_start_game, get_result, print_game
+from 諸政安common_function import get_0_index, into_start_game, get_result, print_game, is_illegal_num
 
 
 def computer_go(start_game):
@@ -103,15 +103,19 @@ computer_num_list = list()
 start_game = [[0, 0, 0],
               [0, 0, 0],
               [0, 0, 0]]
-if M == 1:
+if M == 1:  # computer 先
     while True:
         start_game = into_start_game(computer_go(start_game), start_game, 2)
         print_game(start_game)
         result = get_result(start_game)
         if result != 4:
             break
+        try:
+            player_go = int(input())
+        except:
+            player_go = int(input("Please input again: "))
+        # if is_illegal_num(player_go):
 
-        player_go = int(input())
         start_game = into_start_game(player_go, start_game, 1)
         # print_game(start_game)
         result = get_result(start_game)
@@ -120,7 +124,14 @@ if M == 1:
     result = get_result(start_game)
 else:
     while True:
-        player_go = int(input())
+        is_ok_num = False
+        while not is_ok_num:
+            # try:
+            player_go = int(input("Please input num: "))
+            is_ok_num = True
+        # except:
+        #     player_go = int(input("Please input num: "))
+
         start_game = into_start_game(player_go, start_game, 1)
         # print_game(start_game)
         result = get_result(start_game)

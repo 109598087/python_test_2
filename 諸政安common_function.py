@@ -6,23 +6,26 @@ def is_illegal_num(num):
 
 
 def into_start_game(num, start_game, player_computer):
-    if num == 1:
+    if is_illegal_num(str(num)):
+        print('Error')
+        return
+    if num == 1 and start_game[0][0] == 0:
         start_game[0][0] = player_computer
-    elif num == 2:
+    elif num == 2 and start_game[0][1] == 0:
         start_game[0][1] = player_computer
-    elif num == 3:
+    elif num == 3 and start_game[0][2] == 0:
         start_game[0][2] = player_computer
-    elif num == 4:
+    elif num == 4 and start_game[1][0] == 0:
         start_game[1][0] = player_computer
-    elif num == 5:
+    elif num == 5 and start_game[1][1] == 0:
         start_game[1][1] = player_computer
-    elif num == 6:
+    elif num == 6 and start_game[1][2] == 0:
         start_game[1][2] = player_computer
-    elif num == 7:
+    elif num == 7 and start_game[2][0] == 0:
         start_game[2][0] = player_computer
-    elif num == 8:
+    elif num == 8 and start_game[2][1] ==0:
         start_game[2][1] = player_computer
-    elif num == 9:
+    elif num == 9 and start_game[2][2] == 0:
         start_game[2][2] = player_computer
     else:
         print('Error')
