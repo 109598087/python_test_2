@@ -11,6 +11,13 @@ def get_all_classroom_comb_list(classroom_list, class_number):
     return b
 
 
+def is_time_ok(start_time, end_time, classroom_time_dict):
+    for remove_time in range(start_time, end_time + 1):
+        if remove_time not in classroom_time_dict[classroom]:
+            return False
+    return True
+
+
 row1_split = input().split(' ')
 M = int(row1_split[0])
 N = int(row1_split[1])
@@ -48,13 +55,14 @@ for i in range(len(all_class_comb_list[0])):
     classroom = all_classroom_comb_list[0][i]
 
     class_people = class_dict[_class][0]
+    start_time = class_dict[_class][1]
+    end_time = class_dict[_class][2]
     classroom_people = classroom_dict[classroom]
-    if class_people <= classroom_people: # time
-        # when ok
-        start_time = class_dict[_class][1]
-        end_time = class_dict[_class][2]
+    if class_people <= classroom_people and is_time_ok(start_time, end_time, classroom_time_dict):
         time += end_time - start_time
         result_class_classroom.append([_class, classroom])
-        for remove_time in range(start_time, end_time+1):
+        for remove_time in range(start_time, end_time + 1):
             classroom_time_dict[classroom][classroom_time_dict[classroom].index(remove_time)] = 0
         print(classroom_time_dict)
+print(time)
+print(result_class_classroom)
