@@ -16,6 +16,7 @@ for _ in range(N):
     class_dict[class_split[0]] = [int(class_split[1]), int(class_split[2]), int(class_split[3])]
 print(class_dict)
 
+f
 print(class_dict.keys())
 # a_list
 # class_permutation = list(permutations([key for key in class_dict.keys()]))

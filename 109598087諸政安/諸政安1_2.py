@@ -82,14 +82,14 @@ def computer_go(start_game):
         temp_game = into_start_game(num, temp_game, 1)
         if get_result(temp_game) == 1:
             return num
+    # computer next win
+    player_next_win_list = get_player_next_win(start_game)
+    if len(player_next_win_list) > 0:
+        return player_next_win_list[1]
     # stop player live_tw
     live_two_position_list = get_live_two_position(start_game)
     if len(live_two_position_list) > 0:
         return live_two_position_list[0]
-    # computer next win
-    player_next_win_list = get_player_next_win(start_game)
-    if len(player_next_win_list) > 0:
-        return player_next_win_list[0]
 
     # good choice
     good_list = [5]
@@ -133,7 +133,7 @@ def get_live_two_position(start_game):
             count += 1
         if temp_game[0][1] == temp_game[2][1] == 1 and temp_game[1][1] == 0:
             count += 1
-        if temp_game[0][2] == temp_game[2][2] == 1 and temp_game[1][2] == 0: #
+        if temp_game[0][2] == temp_game[2][2] == 1 and temp_game[1][2] == 0:  #
             count += 1
 
         if temp_game[0][2] == temp_game[0][1] == 1 and temp_game[0][0] == 0:
@@ -157,7 +157,7 @@ def get_live_two_position(start_game):
         if temp_game[2][2] == temp_game[1][1] == 1 and temp_game[0][0] == 0:
             count += 1
 
-        if temp_game[0][2] == temp_game[1][1] == 1 and temp_game[2][0] == 0: #
+        if temp_game[0][2] == temp_game[1][1] == 1 and temp_game[2][0] == 0:  #
             count += 1
         if temp_game[0][2] == temp_game[2][0] == 1 and temp_game[1][1] == 0:
             count += 1
