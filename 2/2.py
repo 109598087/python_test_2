@@ -62,34 +62,27 @@ for class_comb in all_class_comb_list:
                 result_class_classroom.append([_class, classroom])
                 for remove_time in range(start_time, end_time):
                     classroom_time_dict[classroom][classroom_time_dict[classroom].index(remove_time)] = 0
-            # print(classroom_time_dict)
+            # print(class_comb[i], classroom_comb[i], classroom_time_dict)
+        # print(time, result_class_classroom)
+        # print()
         time_list.append(time)
         all_comb_result_class_classroom_list.append(result_class_classroom)
         # print(time)
         # print(result_class_classroom)
 
-print(time_list)
-print(all_comb_result_class_classroom_list)
-#
-# # print(class_number_list)
-# class_number_list = [len(result) for result in all_comb_result_class_classroom_list]
-#
-# # max time
-#
-# max_time = max(time_list)
-# max_class_number = max(class_number_list)
-#
-# # 最大時常
-# max_time_list = [all_comb_result_class_classroom_list[i] for i in range(len(time_list)) if time_list[i] == max_time]
-# # print(max_time_list)
-# # 最多課程，編號
-# max_class_number_list = sorted([result for result in max_time_list if len(result) == max_class_number])
-#
-# # print(max_class_number_list[0])
-# for result in max_class_number_list[0]:
-#     print(result[0], result[1])
-# # # max class number
-# # print(max_class_number)
-# # for i in range(len(class_number_list)):
-# #     if class_number_list[i] == max_class_number:
-# #         print(all_comb_result_class_classroom_list[i])
+# print(time_list)
+# print(all_comb_result_class_classroom_list)
+
+# for 所有可能中的最多課程
+# all_class_number_list = [len(result) for result in all_comb_result_class_classroom_list]
+
+
+max_time = max(time_list)
+max_time_list = [all_comb_result_class_classroom_list[i] for i in range(len(time_list)) if time_list[i] == max_time]
+
+# for 最大時長下的最多課程
+class_number_list = [len(result) for result in max_time_list]
+max_class_number_list = sorted([result for result in max_time_list if len(result) == max(class_number_list)])
+# print(max_class_number_list[0])
+for result in max_class_number_list[0]:
+    print(result[0], result[1])
