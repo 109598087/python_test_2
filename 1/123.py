@@ -94,6 +94,8 @@ def get_double_lines_step(nine_square_division, player):
             return 7
         if (nine_square_division[2] == player or nine_square_division[6] == player) and nine_square_division[8] == "0":
             return 9
+    if player == "2":
+        p = get_double_lines_step(nine_square_division, "1")  # 連線或阻擋兩條可能路徑
     return p
 
 
@@ -145,7 +147,7 @@ def main():
     player = input("請輸入玩家1或電腦2誰先下(輸入1或2)：")
     while player != "1" and player != "2": player = input("請輸入玩家1或電腦2誰先下(輸入1或2)：")
     player = int(player)
-    while 0 <= times <= 9:
+    while times >= 0 and times <= 9:
         nine_square_division, player, times = record(player, nine_square_division, times)
         print_nine_square_division(nine_square_division)
         result = get_single_result(nine_square_division, times)
