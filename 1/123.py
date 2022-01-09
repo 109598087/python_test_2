@@ -58,13 +58,6 @@ def get_single_result(nine_square_division, times):
     return win
 
 
-def get_result(result_list, times):
-    for result in result_list:
-        if result == "1" or result == "2": return result
-    if times == 9: return "3"
-    return "4"
-
-
 def get_win_or_block_step(nine_square_division, times, player):
     new_nine_square_division = copy.deepcopy(nine_square_division)
     p = 0
@@ -83,7 +76,7 @@ def check_step(position, player):
     return position == player or position == "0"
 
 
-def get_double_lines_step(nine_square_division, player):
+def get_double_lines_step(nine_square_division, times, player):
     p = 0
     if nine_square_division[4] == player:
         if (nine_square_division[2] == player or nine_square_division[6] == player) and nine_square_division[0] == "0":
@@ -94,8 +87,13 @@ def get_double_lines_step(nine_square_division, player):
             return 7
         if (nine_square_division[2] == player or nine_square_division[6] == player) and nine_square_division[8] == "0":
             return 9
-    if player == "2":
-        p = get_double_lines_step(nine_square_division, "1")  # 連線或阻擋兩條可能路徑
+    test_nine_square_division = copy.deepcopy(nine_square_division)
+    for i in range(9):
+        if test_nine_square_division[i] == "0":
+            test_nine_square_division[i] = player
+            enemy = getPlayer(int(player) + 1)
+            if get_win_or_block_step(test_nine_square_division, times + 1, enemy) != 0: return i + 1
+    if player == "1": return get_double_lines_step(nine_square_division, times, "2")  # 阻擋兩條可能路徑
     return p
 
 
@@ -125,13 +123,23 @@ def get_next_step(nine_square_division, times):
             return 3
         if nine_square_division[8] == "1" and nine_square_division[0] == "0":
             return 1
+        if nine_square_division[4] == "0":
+            return 5
+        if nine_square_division[0] == "1":
+            return 9
+        if nine_square_division[2] == "1":
+            return 7
+        if nine_square_division[6] == "1":
+            return 3
+        if nine_square_division[8] == "1":
+            return 1
     if times == 9:  return
     if times == 8:  # 剩下一步
         for i in range(len(nine_square_division)):
             if nine_square_division[i] == "0": return i + 1
     next_step = get_win_or_block_step(nine_square_division, times, "2")  # 連線
     if next_step != 0: return next_step
-    next_step = get_double_lines_step(nine_square_division, "2")  # 連線或阻擋兩條可能路徑
+    next_step = get_double_lines_step(nine_square_division, times, "1")  # 連線或阻擋兩條可能路徑
     if next_step == 0:  # 隨便下
         p = 0
         while p < len(nine_square_division):
